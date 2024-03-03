@@ -6,7 +6,6 @@ import java.nio.file.Paths;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class DatabaseInitService {
     public static void main(String[] args) {
@@ -18,8 +17,8 @@ public class DatabaseInitService {
 
             for (String query : queries) {
                 if (!query.trim().isEmpty()) {
-                    try (PreparedStatement statement = connection.prepareStatement(sqlContent)) {
-                        statement.executeQuery();
+                    try (PreparedStatement statement = connection.prepareStatement(query)) {
+                        statement.execute();
                     }
                 }
             }
@@ -27,7 +26,6 @@ public class DatabaseInitService {
             System.out.println("Database initialized successfully.");
         } catch (SQLException | IOException e) {
             e.printStackTrace();
-            // Можна обробити помилку підключення до БД або зчитування файлу тут
         }
     }
 }

@@ -1,6 +1,7 @@
 package org.example.ClassesForLists;
 
 public class Worker {
+    private int id;
     private String type;
     private String name;
     private String birthday;
@@ -14,6 +15,14 @@ public class Worker {
 
     public Worker(String name, double salary) {
         this.name = name;
+        this.salary = salary;
+    }
+
+    public Worker(int id, String name, String birthday, String type, double salary) {
+        this.id = id;
+        this.name = name;
+        this.birthday = birthday;
+        this.type = type;
         this.salary = salary;
     }
 
@@ -31,6 +40,10 @@ public class Worker {
 
     public double getSalary() {
         return salary;
+    }
+
+    public int getId() {
+        return id;
     }
 
 }
