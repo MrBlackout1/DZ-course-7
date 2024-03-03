@@ -4,6 +4,7 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.sql.Statement;
 
@@ -17,8 +18,8 @@ public class DatabaseInitService {
 
             for (String query : queries) {
                 if (!query.trim().isEmpty()) {
-                    try (Statement statement = connection.createStatement()) {
-                        statement.execute(query);
+                    try (PreparedStatement statement = connection.prepareStatement(sqlContent)) {
+                        statement.executeQuery();
                     }
                 }
             }
